@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0536e12ea706b584da3792db0fa57f4a, type: 3}
+  m_Name: Health Potion
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: f4f184b415a9ea14198a844aafd12ef9, type: 3}
+  itemTier: 0
+  itemID: Potion_003
+  displayName: Health Potion
+  stackable: 1
+  description: A small vial of lightly yellow liquid. Basically a less concentrated
+    lemongrass tea.
+  pickup: {fileID: 2783108177131553529, guid: e8656a6f98f12bb43801e6fc59ae3ec1, type: 3}
+  sellable: 1
+  itemSellPrice:
+    bronze: 3
+    silver: 0
+    gold: 0
+  itemBuyPrice:
+    bronze: 5
+    silver: 0
+    gold: 0
+  itemStandingValue: 0.01
+  shopChance: 90
+  shopMaxAmount: 5
+  consumable: 1
+  positiveAlchemicalBonuses: []
+  negativeAlchemicalBonuses: []
+  alchemicalEffectBlockages: []
+  thrownPrefab: {fileID: 7443303035843058944, guid: 8608fd3219adf634aad2bfc64e904325,
+    type: 3}
+  launchAngle: 60
+  potionRecipe:
+    baseItem: {fileID: 11400000, guid: e09b61e17e130184486d117d84c23f71, type: 2}
+    potionItem: {fileID: 0}
+    reagentItemPrimary: {fileID: 11400000, guid: f04ddee4e1d289243a5cbf2fa0385d43,
+      type: 2}
+    reagentItemSecondary: {fileID: 0}
+  potionActiveEffectDescription: Heals all entities in splash zone
+  potionStatusEffects:
+  - {fileID: 11400000, guid: c6be35a7783522a40b8e9a1f3fc1b87a, type: 2}

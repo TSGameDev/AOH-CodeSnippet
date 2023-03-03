@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0fa134b6b25d9c4a9e5f477dfd17b4d, type: 3}
+  m_Name: Dim Berry
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: abc6fa140e1507342b1ff5aaeb63d247, type: 3}
+  itemTier: 0
+  itemID: Reagent_001
+  displayName: Dim Berry
+  stackable: 1
+  description: 
+  pickup: {fileID: 2783108177131553529, guid: e8656a6f98f12bb43801e6fc59ae3ec1, type: 3}
+  sellable: 1
+  itemSellPrice:
+    bronze: 2
+    silver: 0
+    gold: 0
+  itemBuyPrice:
+    bronze: 4
+    silver: 0
+    gold: 0
+  itemStandingValue: 0.01
+  shopChance: 60
+  shopMaxAmount: 4
+  alchemicalEffects:
+  - effect: 7
+    effectTier: 1
+  mortarAndPestleResult: {fileID: 0}
+  mortarAndPestleResult2: {fileID: 0}
+  blenderResult: {fileID: 0}
+  choppingResult: {fileID: 0}
+  choppingResult2: {fileID: 0}
+  bunsenburnerResults: []

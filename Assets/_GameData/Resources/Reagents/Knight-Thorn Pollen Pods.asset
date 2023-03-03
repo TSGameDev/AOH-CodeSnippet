@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0fa134b6b25d9c4a9e5f477dfd17b4d, type: 3}
+  m_Name: Knight-Thorn Pollen Pods
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: cfe482ce67cbd4f4ca5da959ea31ec53, type: 3}
+  itemTier: 0
+  itemID: Reagent_006
+  displayName: Knight-Thorn Pollen Pods
+  stackable: 1
+  description: Small fluffy buds of Knight-Thron Pollen
+  pickup: {fileID: 2783108177131553529, guid: e8656a6f98f12bb43801e6fc59ae3ec1, type: 3}
+  sellable: 1
+  itemSellPrice:
+    bronze: 3
+    silver: 0
+    gold: 0
+  itemBuyPrice:
+    bronze: 5
+    silver: 0
+    gold: 0
+  itemStandingValue: 0.01
+  shopChance: 80
+  shopMaxAmount: 20
+  alchemicalEffects:
+  - effect: 4
+    effectTier: 1
+  mortarAndPestleResult: {fileID: 11400000, guid: aed66564b715e384e834d5030d67160d,
+    type: 2}
+  mortarAndPestleResult2: {fileID: 0}
+  blenderResult: {fileID: 0}
+  choppingResult: {fileID: 0}
+  choppingResult2: {fileID: 0}
+  bunsenburnerResults:
+  - minTemp: 175
+    maxTemp: 225
+    result: {fileID: 11400000, guid: f096aa42b501a07448265a009ea52de8, type: 2}

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59dfbb9ff2718c4c8377bfab1c5d91c, type: 3}
+  m_Name: Camera Connector
+  m_EditorClassIdentifier: 
+  normalSpeed: 0.25
+  fastSpeed: 1
+  currentSpeed: 0.25
+  movementLerpTime: 5
+  rotationTickAmount: 2
+  zoomTickAmount: {x: 0, y: 5, z: -5}
+  newPos: {x: 0, y: 0, z: 0}
+  newRot: {x: 0, y: -0.29237348, z: 0, w: -0.9563098}
+  newZoom: {x: 0, y: 60, z: -60}
+  cameraInput: {x: 0, y: 0}
+  fastMode: 0
+  rotateCameraRight: 0
+  rotateCameraLeft: 0
+  zoomCameraIn: 0
+  zoomCameraOut: 0
+  lockCamera: 0
