@@ -9,8 +9,7 @@ namespace TSGameDev.Core.AI
     {
         private Transform[] wonderPoints;
 
-        public WounderState(GameObject _Entity, StateMachine _StateMachine, Animator _Anim, NavMeshAgent _Agent, AIStats _AIStats, AIBrain _AIBrain, AIController _AIController) 
-            : base(_Entity, _StateMachine, _Anim, _Agent, _AIStats, _AIBrain, _AIController)
+        public WounderState(AIController _AIController) : base(_AIController)
         {
         }
 

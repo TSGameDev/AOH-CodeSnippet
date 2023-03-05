@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -11,8 +12,7 @@ namespace TSGameDev.Core.AI
         private GameObject _ChaseTarget;
         private float ATTACK_ORIGIN_OFFSET = 1f;
 
-        public AttackState(GameObject _Entity, StateMachine _StateMachine, Animator _Anim, NavMeshAgent _Agent, AIStats _AIStats, AIBrain _AIBrain, AIController _AIController, GameObject _ChaseTarget) 
-            : base(_Entity, _StateMachine, _Anim, _Agent, _AIStats, _AIBrain, _AIController)
+        public AttackState(AIController _AIController, GameObject _ChaseTarget) : base(_AIController)
         {
             this._ChaseTarget = _ChaseTarget;
         }
@@ -32,18 +32,14 @@ namespace TSGameDev.Core.AI
         {
             //Created mesh for the attack cone
             Mesh _Mesh = new Mesh();
-            //Visualise the raycast mesh
-            MeshFilter _AttackMesh = _Entity.GetComponentInParent<Indicator>().GetMeshFilter();
-            _AttackMesh.mesh = _Mesh;
             //start pos of the attack cone, where all the tris connect to.
             Vector3 _AttackOrigin = new Vector3(_Entity.transform.position.x, _Entity.transform.position.y + ATTACK_ORIGIN_OFFSET, _Entity.transform.position.z);
             Vector3 _Origin = _AttackOrigin;
             //The amount of raycasts performed to smooth the cone and create a more defined area of attack.
             int _RayCount = 25;
             //The current angle being processed
-            Vector3 _EntityDirection = _ChaseTarget.transform.position - _Entity.transform.position;
-            var dir = _EntityDirection / _EntityDirection.magnitude;
-            float _Angle = SetAimDirection(dir);
+            Vector3 _EntityDirection = (_ChaseTarget.transform.position - _Entity.transform.position).normalized;
+            float _Angle = SetAimDirection(_EntityDirection);
             //The incriments to increase the angle, divides the area of attack angle by the amount of rays. Higher attack angles require more rays to be precise.
             float _AngleIncriment = _AIStats.attackAngle / _RayCount;
             //The maximum range of all raycasts
@@ -56,42 +52,9 @@ namespace TSGameDev.Core.AI
             //Sets the starting vert to the origin position
             _Verts[0] = _Origin;
 
-            int _VertIndex = 1;
-            int _TriIndex = 0;
-            for(int i = 0; i <= _RayCount; i++)
-            {
-                Vector3 _Vertex;
-                if (Physics.Raycast(_Origin, GetVectorFromAngle(_Angle), out RaycastHit _RaycastHit, _MaxAttackRange))
-                {
-                    //Hit 
-                    _Vertex = _RaycastHit.point;
-                    //Hit Player Object
-                    Debug.Log(_RaycastHit.collider.name);
-                }
-                else
-                {
-                    //No Hit
-                    _Vertex = _Origin + GetVectorFromAngle(_Angle) * _MaxAttackRange;
-                    Debug.Log("No Hit Player");
-                }
+            RayMeshCreation(_RayCount, _Origin, _Angle, _MaxAttackRange, _Verts, _Tris, _AngleIncriment);
 
-
-                _Verts[_VertIndex] = _Vertex;
-                if(i > 0)
-                {
-                    _Tris[_TriIndex + 0] = 0;
-                    _Tris[_TriIndex + 1] = _VertIndex - 1;
-                    _Tris[_TriIndex + 2] = _VertIndex;
-                    _TriIndex += 3;
-                }
-
-                _VertIndex++;
-                _Angle -= _AngleIncriment;
-            }
-
-            _Mesh.vertices = _Verts;
-            _Mesh.uv = _UV;
-            _Mesh.triangles = _Tris;
+            SetMesh(_Mesh, _Verts, _UV, _Tris);
         }
 
         private Vector3 GetVectorFromAngle(float _Angle)
@@ -105,13 +68,57 @@ namespace TSGameDev.Core.AI
             _Dir = _Dir.normalized;
             float N = Mathf.Atan2(_Dir.z, _Dir.x) * Mathf.Rad2Deg;
             if (N < 0) N += 360;
+            Debug.Log($"Angle From Vector: {N}");
             return N;
         }
 
         private float SetAimDirection(Vector3 _AimDir)
         {
-            float _StartingAngle = GetAnlgeFromVectorFloat(_AimDir) - _AIStats.attackAngle / 2f;
+            float _StartingAngle = GetAnlgeFromVectorFloat(_AimDir) + (_AIStats.attackAngle / 2);
+            Debug.Log($"Starting Angle: {_StartingAngle}");
             return _StartingAngle;
+        }
+
+        private void SetMesh(Mesh _Mesh, Vector3[] _Verts, Vector2[] _UV, int[] _Tris)
+        {
+            MeshFilter _AttackMesh = _Entity.GetComponentInParent<Indicator>().GetMeshFilter();
+            _AttackMesh.mesh = _Mesh;
+            _Mesh.vertices = _Verts;
+            _Mesh.uv = _UV;
+            _Mesh.triangles = _Tris;
+        }
+
+        private void RayMeshCreation(int _RayCount, Vector3 _Origin, float _Angle, float _MaxAttackRange, Vector3[] _Verts, int[] _Tris, float _AngleIncriment)
+        {
+            int _VertIndex = 1;
+            int _TriIndex = 0;
+            for (int i = 0; i <= _RayCount; i++)
+            {
+                Vector3 _Vertex;
+                if (Physics.Raycast(_Origin, GetVectorFromAngle(_Angle), out RaycastHit _RaycastHit, _MaxAttackRange, PLAYER_COLLISION_LAYER))
+                {
+                    //Hit 
+                    _Vertex = _RaycastHit.point;
+                }
+                else
+                {
+                    //No Hit
+                    _Vertex = _Origin + GetVectorFromAngle(_Angle) * _MaxAttackRange;
+                }
+
+
+                _Verts[_VertIndex] = _Vertex;
+                if (i > 0)
+                {
+                    _Tris[_TriIndex + 0] = 0;
+                    _Tris[_TriIndex + 1] = _VertIndex - 1;
+                    _Tris[_TriIndex + 2] = _VertIndex;
+                    _TriIndex += 3;
+                }
+
+                _VertIndex++;
+                _Angle -= _AngleIncriment;
+            }
         }
 
         public override void Exit() 

@@ -8,8 +8,7 @@ namespace TSGameDev.Core.AI
 {
     public class IdleState : State
     {
-        public IdleState(GameObject _Entity, StateMachine _StateMachine, Animator _Anim, NavMeshAgent _Agent, AIStats _AIStats, AIBrain _AIBrain, AIController _AIController) 
-            : base(_Entity, _StateMachine, _Anim, _Agent, _AIStats, _AIBrain, _AIController)
+        public IdleState(AIController _AIController) : base(_AIController)
         {
         }
 
@@ -17,7 +16,7 @@ namespace TSGameDev.Core.AI
         {
             if (_AIBrain.GetWonder())
             {
-                _StateMachine.CurrentState = new WounderState(_Entity, _StateMachine, _EntityAnimator, _EntityNavMeshAgent, _AIStats, _AIBrain, _AIController);
+                _StateMachine.CurrentState = new WounderState(_AIController);
                 return;
             }
             Debug.Log("Idle State");

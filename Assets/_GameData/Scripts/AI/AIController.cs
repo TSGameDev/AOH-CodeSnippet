@@ -1,3 +1,4 @@
+using O3DWB;
 using System.Collections;
 using System.Collections.Generic;
 using TSGameDev.Core.AI;
@@ -49,7 +50,7 @@ namespace TSGameDev.Core.AI
             _StateMachine = new();
             _Animator = GetComponent<Animator>();
             _NavMeshAgent= GetComponent<NavMeshAgent>();
-            _BeginningState = new IdleState(gameObject, _StateMachine, _Animator, _NavMeshAgent, _InstanceData, aIBrain, this);
+            _BeginningState = new IdleState(this);
         }
 
         private void Start()
@@ -93,8 +94,13 @@ namespace TSGameDev.Core.AI
 
         #region Getters
 
+        public AIStats GetInstanceData() => _InstanceData;
+        public AIBrain GetAIBrain() => aIBrain;
+        public GameObject GetEntity() => gameObject;
+        public StateMachine GetStateMachine() => _StateMachine;
+        public Animator GetAnimator() => _Animator;
+        public NavMeshAgent GetNavMeshAgent() => _NavMeshAgent;
         public Transform GetReturnPoint() => returnPoint;
-
         public Transform[] GetWonderPoints() => wonderPoints;
 
         #endregion
@@ -106,7 +112,7 @@ namespace TSGameDev.Core.AI
             _InstanceData = aIData.GetAIStats();
         }
 
-        public void ForceDeathState() => _StateMachine.CurrentState = new DeadState(gameObject, _StateMachine, _Animator, _NavMeshAgent, _InstanceData, aIBrain, this);
+        public void ForceDeathState() => _StateMachine.CurrentState = new DeadState(this);
 
         #endregion
 
@@ -152,8 +158,6 @@ namespace TSGameDev.Core.AI
             Gizmos.DrawSphere(transform.position, aIData.GetAIStats().visualRange);
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(transform.position, aIData.GetAIStats().attackRange);
-            Gizmos.color = Color.black;
-            Gizmos.DrawCube(transform.position + transform.forward, new Vector3(2, 0.2f, 1));
         }
     }
 }

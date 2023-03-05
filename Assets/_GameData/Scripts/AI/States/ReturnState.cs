@@ -7,8 +7,7 @@ namespace TSGameDev.Core.AI
 {
     public class ReturnState : State
     {
-        public ReturnState(GameObject _Entity, StateMachine _StateMachine, Animator _Anim, NavMeshAgent _Agent, AIStats _AIStats, AIBrain _AIBrain, AIController _AIController) 
-            : base(_Entity, _StateMachine, _Anim, _Agent, _AIStats, _AIBrain, _AIController)
+        public ReturnState(AIController _AIController) : base(_AIController)
         {
         }
 
@@ -19,7 +18,7 @@ namespace TSGameDev.Core.AI
             _EntityNavMeshAgent.ResetPath();
 
             if(_AIBrain.GetWonder())
-                _StateMachine.CurrentState = new WounderState(_Entity, _StateMachine, _EntityAnimator, _EntityNavMeshAgent, _AIStats, _AIBrain, _AIController);
+                _StateMachine.CurrentState = new WounderState(_AIController);
             else
                 _EntityNavMeshAgent.SetDestination(_AIController.GetReturnPoint().position);
             
@@ -30,7 +29,7 @@ namespace TSGameDev.Core.AI
         {
             float _RemainingDis = DistanceCheck(_EntityNavMeshAgent.destination);
             if (_RemainingDis <= 0.5f)
-                _StateMachine.CurrentState = new IdleState(_Entity, _StateMachine, _EntityAnimator, _EntityNavMeshAgent, _AIStats, _AIBrain, _AIController);
+                _StateMachine.CurrentState = new IdleState(_AIController);
         }
     }
 }

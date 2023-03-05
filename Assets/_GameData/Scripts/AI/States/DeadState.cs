@@ -7,7 +7,7 @@ namespace TSGameDev.Core.AI
 {
     public class DeadState : State
     {
-        public DeadState(GameObject _Entity, StateMachine _StateMachine, Animator _Anim, NavMeshAgent _Agent, AIStats _AIStats, AIBrain _AIBrain, AIController _AIController) : base(_Entity, _StateMachine, _Anim, _Agent, _AIStats, _AIBrain, _AIController)
+        public DeadState(AIController _AIController) : base(_AIController)
         {
         }
 

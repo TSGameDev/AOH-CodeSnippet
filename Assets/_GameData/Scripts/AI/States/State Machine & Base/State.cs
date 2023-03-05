@@ -21,16 +21,16 @@ namespace TSGameDev.Core.AI
         protected float ANIM_RUN_SPEED = 2f;
         protected int PLAYER_COLLISION_LAYER = LayerMask.GetMask("Player");
 
-        private float COLLISION_COLLIDER_OFFSET = 0.35f;
+        private float COLLISION_COLLIDER_OFFSET = 0.25f;
 
-        public State(GameObject _Entity, StateMachine _StateMachine, Animator _Anim, NavMeshAgent _Agent, AIStats _AIStats, AIBrain _AIBrain, AIController _AIController)
+        public State(AIController _AIController)
         {
-            this._Entity = _Entity;
-            this._StateMachine = _StateMachine;
-            _EntityAnimator = _Anim;
-            _EntityNavMeshAgent = _Agent;
-            this._AIStats = _AIStats;
-            this._AIBrain = _AIBrain;
+            _Entity = _AIController.GetEntity();
+            _StateMachine = _AIController.GetStateMachine();
+            _EntityAnimator = _AIController.GetAnimator();
+            _EntityNavMeshAgent = _AIController.GetNavMeshAgent();
+            _AIStats = _AIController.GetInstanceData();
+            _AIBrain = _AIController.GetAIBrain();
             this._AIController = _AIController;
         }
 
@@ -40,7 +40,7 @@ namespace TSGameDev.Core.AI
         public virtual void Exit() { }
 
         protected float DistanceCheck(Vector3 _TargetPoint) => Vector3.Distance(_Entity.transform.position, _TargetPoint);
-        protected float DistanceCheckWithCollisionOffset(Vector3 _TargetPoint) => Vector3.Distance(_Entity.transform.position, _TargetPoint) + COLLISION_COLLIDER_OFFSET;
+        protected float DistanceCheckWithCollisionOffset(Vector3 _TargetPoint) => Vector3.Distance(_Entity.transform.position, _TargetPoint) - COLLISION_COLLIDER_OFFSET;
         protected void CheckForPlayer()
         {
             Collider[] _PlayersNearEntity = Physics.OverlapSphere(_Entity.transform.position, _AIStats.visualRange, PLAYER_COLLISION_LAYER);
@@ -58,7 +58,7 @@ namespace TSGameDev.Core.AI
                     }
                 }
                 if (_ChaseTarget != null)
-                    _StateMachine.CurrentState = new ChaseState(_Entity, _StateMachine, _EntityAnimator, _EntityNavMeshAgent, _AIStats, _AIBrain, _AIController, _ChaseTarget);
+                    _StateMachine.CurrentState = new ChaseState(_AIController, _ChaseTarget);
             }
         }
     }
