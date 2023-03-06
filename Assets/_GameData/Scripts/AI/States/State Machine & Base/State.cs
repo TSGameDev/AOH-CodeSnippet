@@ -20,6 +20,7 @@ namespace TSGameDev.Core.AI
         protected float ANIM_WALK_SPEED = 1f;
         protected float ANIM_RUN_SPEED = 2f;
         protected int PLAYER_COLLISION_LAYER = LayerMask.GetMask("Player");
+        protected int ENTITY_COLLISION_LAYER = LayerMask.GetMask("Entity");
 
         private float COLLISION_COLLIDER_OFFSET = 0.25f;
 

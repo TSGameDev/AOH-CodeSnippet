@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEditor.PackageManager;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -55,6 +57,8 @@ namespace TSGameDev.Core.AI
             RayMeshCreation(_RayCount, _Origin, _Angle, _MaxAttackRange, _Verts, _Tris, _AngleIncriment);
 
             SetMesh(_Mesh, _Verts, _UV, _Tris);
+
+            CalculateTransition();
         }
 
         private Vector3 GetVectorFromAngle(float _Angle)
@@ -68,20 +72,25 @@ namespace TSGameDev.Core.AI
             _Dir = _Dir.normalized;
             float N = Mathf.Atan2(_Dir.z, _Dir.x) * Mathf.Rad2Deg;
             if (N < 0) N += 360;
-            Debug.Log($"Angle From Vector: {N}");
             return N;
         }
 
         private float SetAimDirection(Vector3 _AimDir)
         {
             float _StartingAngle = GetAnlgeFromVectorFloat(_AimDir) + (_AIStats.attackAngle / 2);
-            Debug.Log($"Starting Angle: {_StartingAngle}");
             return _StartingAngle;
         }
 
         private void SetMesh(Mesh _Mesh, Vector3[] _Verts, Vector2[] _UV, int[] _Tris)
         {
-            MeshFilter _AttackMesh = _Entity.GetComponentInParent<Indicator>().GetMeshFilter();
+            Indicator _AttackIndicator = _Entity.GetComponentInParent<Indicator>();
+            if (_AttackIndicator == null)
+                return;
+
+            MeshFilter _AttackMesh = _AttackIndicator.GetMeshFilter();
+            if (_AttackMesh == null)
+                return;
+
             _AttackMesh.mesh = _Mesh;
             _Mesh.vertices = _Verts;
             _Mesh.uv = _UV;
@@ -95,10 +104,15 @@ namespace TSGameDev.Core.AI
             for (int i = 0; i <= _RayCount; i++)
             {
                 Vector3 _Vertex;
-                if (Physics.Raycast(_Origin, GetVectorFromAngle(_Angle), out RaycastHit _RaycastHit, _MaxAttackRange, PLAYER_COLLISION_LAYER))
+                if (Physics.Raycast(_Origin, GetVectorFromAngle(_Angle), out RaycastHit _RaycastHit, _MaxAttackRange, ~ENTITY_COLLISION_LAYER))
                 {
-                    //Hit 
+                    //Hit non entity
                     _Vertex = _RaycastHit.point;
+                    //Hit Player
+                    if(_RaycastHit.collider.CompareTag("Player"))
+                    {
+                        Debug.Log("Player Hit");
+                    }
                 }
                 else
                 {
@@ -119,6 +133,20 @@ namespace TSGameDev.Core.AI
                 _VertIndex++;
                 _Angle -= _AngleIncriment;
             }
+        }
+
+        private void CalculateTransition()
+        {
+            //Calculate distance between target and entity
+            float _DisToTarget = DistanceCheckWithCollisionOffset(_ChaseTarget.transform.position);
+
+            //If the distance between target and entity is less than attack range
+            if (_DisToTarget < _AIStats.attackTriggerRange)
+                _StateMachine.CurrentState = new AttackState(_AIController, _ChaseTarget);
+            else if(_DisToTarget > _AIStats.attackTriggerRange)
+                _StateMachine.CurrentState = new ChaseState(_AIController, _ChaseTarget);
+            else if(_DisToTarget > _AIStats.visualRange)
+                _StateMachine.CurrentState = new ReturnState(_AIController);
         }
 
         public override void Exit() 

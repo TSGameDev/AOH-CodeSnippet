@@ -18,4 +18,5 @@ MonoBehaviour:
     damage: 15
     visualRange: 10
     attackAngle: 90
-    attackRange: 1.5
+    attackRange: 2
+    attackTriggerRange: 1

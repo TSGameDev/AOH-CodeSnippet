@@ -38332,11 +38332,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orc
       objectReference: {fileID: 0}
-    - target: {fileID: 5865855958351907632, guid: 34ea30796c59c51408d85c76f5281e4a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.414
-      objectReference: {fileID: 0}
     - target: {fileID: 8243352222206198059, guid: 34ea30796c59c51408d85c76f5281e4a,
         type: 3}
       propertyPath: m_RootOrder

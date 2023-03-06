@@ -28,20 +28,17 @@ namespace TSGameDev.Core.AI
         {
             //Calculate distance between target and entity
             float _DisToTarget = DistanceCheckWithCollisionOffset(_ChaseTarget.transform.position);
-            float _DisToTargetATK = DistanceCheck(_ChaseTarget.transform.position);
             //If the distance between target and entity is less than attack range
-            if (_DisToTargetATK < _AIStats.attackRange)
+            if (_DisToTarget < _AIStats.attackTriggerRange)
             {
                 //Transition to attack state
                 _StateMachine.CurrentState = new AttackState(_AIController, _ChaseTarget);
-                Debug.Log("Changing state to attack state");
             }
             //If the distance between the target and entity is less than the visual range
             else if(_DisToTarget > _AIStats.visualRange)
             {
                 //Transition to return state
                 _StateMachine.CurrentState = new ReturnState(_AIController);
-                Debug.Log("Changing state to return state");
             }
             //If the distance between target and entity is greater than visual range
             else
