@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using TSGameDev.Controls.PlayerStates;
 using System.Collections.Generic;
+using TSGameDev.Core.Effects;
+using CodeMonkey.Utils;
 
 namespace TSGameDev.Controls.MainPlayer
 {
@@ -37,10 +39,18 @@ namespace TSGameDev.Controls.MainPlayer
 
         #endregion
 
-        #region Serialized Variables
+        #region Interaction Variables
 
         [SerializeField] float interactRadius;
         [SerializeField] float interactCancelDistance;
+
+        #endregion
+
+        #region Stats Variables
+
+        [SerializeField] private PlayerStats basePlayerStats;
+        private PlayerStatsData _PlayerStats;
+        public PlayerStatsData GetInstancePlayerStates() => _PlayerStats;
 
         #endregion
 
@@ -56,6 +66,8 @@ namespace TSGameDev.Controls.MainPlayer
         {
             agent.updatePosition = false;
             state = new PlayerStateIdle(this);
+            _PlayerStats = basePlayerStats.GetBasePlayerStats();
+            TimeTickSystem.OnTick += SetIsHittable;
         }
 
         private void Update()
@@ -125,6 +137,8 @@ namespace TSGameDev.Controls.MainPlayer
                 previousInterable = null;
             }
         }
+
+        private void SetIsHittable(object sender, TimeTickSystem.OnTickEventArgs e) => _PlayerStats.SetIsHittable(true);
 
         #endregion
 

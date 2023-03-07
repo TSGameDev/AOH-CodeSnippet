@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using TSGameDev.Controls.MainPlayer;
+using TSGameDev.Core.Effects;
 using UnityEditor.PackageManager;
 using UnityEditorInternal;
 using UnityEngine;
@@ -111,7 +113,7 @@ namespace TSGameDev.Core.AI
                     //Hit Player
                     if(_RaycastHit.collider.CompareTag("Player"))
                     {
-                        Debug.Log("Player Hit");
+                        CalculateDamage(_RaycastHit.collider.gameObject);
                     }
                 }
                 else
@@ -147,6 +149,16 @@ namespace TSGameDev.Core.AI
                 _StateMachine.CurrentState = new ChaseState(_AIController, _ChaseTarget);
             else if(_DisToTarget > _AIStats.visualRange)
                 _StateMachine.CurrentState = new ReturnState(_AIController);
+        }
+
+        private void CalculateDamage(GameObject _HitGameObject)
+        {
+            Player _Player = _HitGameObject.GetComponent<Player>();
+            if (_Player == null)
+                return;
+
+            PlayerStatsData _PlayerInstanceStats = _Player.GetInstancePlayerStates();
+            _PlayerInstanceStats.ReduceHealth(_AIStats.damage);
         }
 
         public override void Exit() 
