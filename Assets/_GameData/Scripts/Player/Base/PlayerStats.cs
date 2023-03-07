@@ -7,24 +7,13 @@ namespace TSGameDev.Core.Effects
     public struct PlayerStatsData
     {
         public int health;
-        private bool _IsHittable;
+        public bool isHittable;
 
         public PlayerStatsData(int _Health)
         {
             health= _Health;
-            _IsHittable= true;
+            isHittable= true;
         }
-
-        public void ReduceHealth(int _Damage)
-        {
-            if(_IsHittable)
-            {
-                health -= _Damage;
-                _IsHittable= false;
-            }
-        }
-
-        public void SetIsHittable(bool _IsHittable) => this._IsHittable= _IsHittable;
     }
 
     [CreateAssetMenu(fileName = "New Player Stats", menuName = "TSGameDev/Player/Player Stats")]

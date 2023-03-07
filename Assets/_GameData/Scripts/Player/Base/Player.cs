@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.AI;
 using TSGameDev.Controls.PlayerStates;
-using System.Collections.Generic;
 using TSGameDev.Core.Effects;
-using CodeMonkey.Utils;
+using TSGameDev.Core.AI;
+using UnityEngine.UI;
 
 namespace TSGameDev.Controls.MainPlayer
 {
     [RequireComponent(typeof(InputManager))]
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IAttackable
     {
         #region State
 
@@ -49,6 +49,7 @@ namespace TSGameDev.Controls.MainPlayer
         #region Stats Variables
 
         [SerializeField] private PlayerStats basePlayerStats;
+        [SerializeField] private Slider healthSlider;
         private PlayerStatsData _PlayerStats;
         public PlayerStatsData GetInstancePlayerStates() => _PlayerStats;
 
@@ -67,6 +68,8 @@ namespace TSGameDev.Controls.MainPlayer
             agent.updatePosition = false;
             state = new PlayerStateIdle(this);
             _PlayerStats = basePlayerStats.GetBasePlayerStats();
+            healthSlider.maxValue = basePlayerStats.GetBasePlayerStats().health;
+            healthSlider.value = _PlayerStats.health;
             TimeTickSystem.OnTick += SetIsHittable;
         }
 
@@ -138,7 +141,18 @@ namespace TSGameDev.Controls.MainPlayer
             }
         }
 
-        private void SetIsHittable(object sender, TimeTickSystem.OnTickEventArgs e) => _PlayerStats.SetIsHittable(true);
+        private void SetIsHittable(object sender, TimeTickSystem.OnTickEventArgs e) => _PlayerStats.isHittable = true;
+
+        public void DealDamage(int _Damage)
+        {
+            if(_PlayerStats.isHittable)
+            {
+                _PlayerStats.health -= _Damage;
+                _PlayerStats.isHittable = false;
+                if (healthSlider != null)
+                    healthSlider.value = _PlayerStats.health;
+            }
+        }
 
         #endregion
 

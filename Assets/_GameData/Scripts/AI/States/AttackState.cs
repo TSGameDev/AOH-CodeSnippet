@@ -153,12 +153,11 @@ namespace TSGameDev.Core.AI
 
         private void CalculateDamage(GameObject _HitGameObject)
         {
-            Player _Player = _HitGameObject.GetComponent<Player>();
-            if (_Player == null)
+            IAttackable _TargetAttackable = _HitGameObject.GetComponent<IAttackable>();
+            if (_TargetAttackable == null)
                 return;
 
-            PlayerStatsData _PlayerInstanceStats = _Player.GetInstancePlayerStates();
-            _PlayerInstanceStats.ReduceHealth(_AIStats.damage);
+            _TargetAttackable.DealDamage(_AIStats.damage);
         }
 
         public override void Exit() 

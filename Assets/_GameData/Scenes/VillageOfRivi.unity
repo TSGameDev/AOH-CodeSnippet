@@ -36786,6 +36786,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3382285932227236315, guid: 43c9bca386f093440b4bdeab18bd4b63,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382285932227236315, guid: 43c9bca386f093440b4bdeab18bd4b63,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3616350619072404287, guid: 43c9bca386f093440b4bdeab18bd4b63,
         type: 3}
       propertyPath: index
@@ -36815,6 +36825,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 1.217804
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967505705642760323, guid: 43c9bca386f093440b4bdeab18bd4b63,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4987035301852442531, guid: 43c9bca386f093440b4bdeab18bd4b63,
         type: 3}
@@ -37455,6 +37470,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.11795044
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765850908559068954, guid: 43c9bca386f093440b4bdeab18bd4b63,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765850908559068954, guid: 43c9bca386f093440b4bdeab18bd4b63,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8038156749554804527, guid: 43c9bca386f093440b4bdeab18bd4b63,
         type: 3}
@@ -38168,6 +38193,12 @@ PrefabInstance:
       propertyPath: indicatorImage
       value: 
       objectReference: {fileID: 1965920502}
+    - target: {fileID: 7253593868713258616, guid: 11c4d8d55e8eb7543af5f94cece19199,
+        type: 3}
+      propertyPath: basePlayerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 5b90914ed47abf84a8c4703d7a59f600,
+        type: 2}
     - target: {fileID: 7253593868713258617, guid: 11c4d8d55e8eb7543af5f94cece19199,
         type: 3}
       propertyPath: indicatorImage
