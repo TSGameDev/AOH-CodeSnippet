@@ -18,7 +18,7 @@ MonoBehaviour:
   displayName: Knight-Thorn Flower
   stackable: 1
   description: A black and purple flower with long pollen stems.
-  pickup: {fileID: 2783108177131553529, guid: e8656a6f98f12bb43801e6fc59ae3ec1, type: 3}
+  pickup: {fileID: 7441999750389701385, guid: 1fa29cd2120b20640a2dc8022aee47a0, type: 3}
   sellable: 1
   itemSellPrice:
     bronze: 2

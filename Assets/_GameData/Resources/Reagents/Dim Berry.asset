@@ -18,7 +18,7 @@ MonoBehaviour:
   displayName: Dim Berry
   stackable: 1
   description: 
-  pickup: {fileID: 2783108177131553529, guid: e8656a6f98f12bb43801e6fc59ae3ec1, type: 3}
+  pickup: {fileID: 5751664072444102686, guid: 3ea56f4a83217004aa7bca7fc6dac342, type: 3}
   sellable: 1
   itemSellPrice:
     bronze: 2

@@ -6102,7 +6102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16d728e86f064246a9ed8598013dc2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 2
+  levelIndex: 3
   triggerNotificationMessage: Press F To Travel To Forest
   loadingUI: {fileID: 1764421702}
   messageManager: {fileID: 1001251711}
@@ -8594,7 +8594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16d728e86f064246a9ed8598013dc2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 0
+  levelIndex: 1
   triggerNotificationMessage: Press F To Enter Player Home
   loadingUI: {fileID: 1764421702}
   messageManager: {fileID: 1001251711}
@@ -11821,7 +11821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16d728e86f064246a9ed8598013dc2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 2
+  levelIndex: 3
   triggerNotificationMessage: Press F To Travel To Forest
   loadingUI: {fileID: 1764421702}
   messageManager: {fileID: 1001251711}
@@ -12745,7 +12745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16d728e86f064246a9ed8598013dc2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 2
+  levelIndex: 3
   triggerNotificationMessage: Press F To Travel To Forest
   loadingUI: {fileID: 1764421702}
   messageManager: {fileID: 1001251711}
@@ -33462,7 +33462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16d728e86f064246a9ed8598013dc2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 2
+  levelIndex: 3
   triggerNotificationMessage: Press F To Travel To Forest
   loadingUI: {fileID: 1764421702}
   messageManager: {fileID: 1001251711}

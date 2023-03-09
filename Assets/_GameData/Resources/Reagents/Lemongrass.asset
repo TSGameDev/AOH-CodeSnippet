@@ -19,7 +19,7 @@ MonoBehaviour:
   stackable: 1
   description: Strands of grass with a slight sticky and acidic feel with a signature
     citrus smell
-  pickup: {fileID: 2783108177131553529, guid: e8656a6f98f12bb43801e6fc59ae3ec1, type: 3}
+  pickup: {fileID: 974823114650207402, guid: 55d9d8a1d3dba034988d5c0e0c452b0d, type: 3}
   sellable: 1
   itemSellPrice:
     bronze: 1

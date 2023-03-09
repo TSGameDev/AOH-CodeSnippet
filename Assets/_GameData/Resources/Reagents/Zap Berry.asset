@@ -19,7 +19,7 @@ MonoBehaviour:
   stackable: 1
   description: A gem-like electro-blue berry. It looks like a solid gem but is actually
     very squishy
-  pickup: {fileID: 2783108177131553529, guid: e8656a6f98f12bb43801e6fc59ae3ec1, type: 3}
+  pickup: {fileID: 136222436903277019, guid: bce35218fd8d9844097bd9a33058aa8b, type: 3}
   sellable: 1
   itemSellPrice:
     bronze: 4
