@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3707982785101739577}
   - component: {fileID: 7125166767564778894}
   - component: {fileID: 2076722884186636982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: stud_low.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 241829843807484922}
   - component: {fileID: 3024354127770888672}
   - component: {fileID: 4741494417526131890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cork_low.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 5579007529755989336}
   - component: {fileID: 7631453447978995598}
   - component: {fileID: 3486129310117051290}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: straps_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 6087537370183190062}
   - component: {fileID: 7698612050279762108}
   - component: {fileID: 7886632351750926174}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: liquid_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 1320415579076783437}
   - component: {fileID: 8063061541789620730}
   - component: {fileID: 2993247697565631272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: strap_low.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 6254317027551888789}
   - component: {fileID: -1942190051105244450}
   - component: {fileID: 1220406705162801956}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PotionBottle_Thrown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 2322513283510755467}
   - component: {fileID: 3973268609642376374}
   - component: {fileID: 3455518289790427802}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bottle_low.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

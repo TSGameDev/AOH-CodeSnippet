@@ -18,8 +18,8 @@ MonoBehaviour:
   OnNightStart:
     m_PersistentCalls:
       m_Calls: []
-  timeMultiplier: 120
-  startHour: 7
+  timeMultiplier: 30
+  startHour: 9
   dayBeginHour: 6
   nightBeginHour: 18
   maxSunlightIntensity: 1.5

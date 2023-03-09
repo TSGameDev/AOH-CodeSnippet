@@ -26,6 +26,11 @@ namespace TSGameDev.LevelManagment
             loadingUI.LoadLevel(levelIndex);
         }
 
+        public void ExitApplication()
+        {
+            Application.Quit();
+        }
+
         public void OnTriggerEnter(Collider other)
         {
             messageManager.NoticationMessageActive(triggerNotificationMessage);

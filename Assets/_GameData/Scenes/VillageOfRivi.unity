@@ -5283,6 +5283,18 @@ MonoBehaviour:
   range: {x: 0, y: 0}
   useConstant: 0
   size: {x: 2048, y: 1000, z: 2048}
+--- !u!114 &219336588 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7075348485993687221, guid: 43c9bca386f093440b4bdeab18bd4b63,
+    type: 3}
+  m_PrefabInstance: {fileID: 5230446571056979093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &219550612
 GameObject:
   m_ObjectHideFlags: 0
@@ -13498,6 +13510,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1802979543041728167, guid: 36f71b62530b0824ab5ce3487b9bb461,
+        type: 3}
+      propertyPath: craftingStation
+      value: 
+      objectReference: {fileID: 1393185124}
     m_RemovedComponents:
     - {fileID: 1802979543041728154, guid: 36f71b62530b0824ab5ce3487b9bb461, type: 3}
     - {fileID: 1802979543041728153, guid: 36f71b62530b0824ab5ce3487b9bb461, type: 3}
@@ -14488,6 +14505,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8034633014941334395, guid: cbff61fe9aabfbf49a4e955da37ba2bc,
+        type: 3}
+      propertyPath: craftingStation
+      value: 
+      objectReference: {fileID: 802275028626992027}
     m_RemovedComponents:
     - {fileID: 8034633014941334398, guid: cbff61fe9aabfbf49a4e955da37ba2bc, type: 3}
     - {fileID: 8034633014941334397, guid: cbff61fe9aabfbf49a4e955da37ba2bc, type: 3}
@@ -22492,6 +22514,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2439022970761902534, guid: 1b67404b1d5ebe14ba4c19ea6651de9e,
+        type: 3}
+      propertyPath: craftingStation
+      value: 
+      objectReference: {fileID: 195536430}
     m_RemovedComponents:
     - {fileID: 2439022970761902533, guid: 1b67404b1d5ebe14ba4c19ea6651de9e, type: 3}
     - {fileID: 2439022970761902532, guid: 1b67404b1d5ebe14ba4c19ea6651de9e, type: 3}
@@ -38193,6 +38220,11 @@ PrefabInstance:
       propertyPath: indicatorImage
       value: 
       objectReference: {fileID: 1965920502}
+    - target: {fileID: 7253593868713258616, guid: 11c4d8d55e8eb7543af5f94cece19199,
+        type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 219336588}
     - target: {fileID: 7253593868713258616, guid: 11c4d8d55e8eb7543af5f94cece19199,
         type: 3}
       propertyPath: basePlayerStats
