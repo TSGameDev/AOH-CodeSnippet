@@ -55,6 +55,12 @@ namespace TSGameDev.Controls.MainPlayer
 
         #endregion
 
+        #region 
+
+        [SerializeField] private GameObject mainMenu;
+
+        #endregion
+
         #region Lifecycle Functions
 
         private void Awake()
@@ -118,6 +124,8 @@ namespace TSGameDev.Controls.MainPlayer
                 }
             }
         }
+
+        public void ToggleMainMenu() => mainMenu.SetActive(!mainMenu.activeSelf);
 
         #endregion
 

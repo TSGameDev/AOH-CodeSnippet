@@ -26,7 +26,6 @@ namespace TSGameDev.Controls
 
         #endregion
 
-
         [SerializeField] private LayerMask mouseHitPointLayer;
         [SerializeField] private LayerMask indicatorLayer;
         [SerializeField] private Canvas indicatorImage;
@@ -108,6 +107,7 @@ namespace TSGameDev.Controls
 
             _PlayerControls.Game.Inventory.performed += ctx => uiConnector.InventoryTween();
             _PlayerControls.Game.Equipment.performed += ctx => uiConnector.EquipmentTween();
+            _PlayerControls.Game.Escape.performed += ctx => _Player.ToggleMainMenu();
 
             #endregion
 

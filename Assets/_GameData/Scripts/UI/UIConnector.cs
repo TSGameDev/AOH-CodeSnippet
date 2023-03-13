@@ -22,8 +22,6 @@ namespace TSGameDev.UI.Controls
 
         public GetTweenProfile GetTargetInventoryUITween;
         public TweenState TargetInventoryState = TweenState.Close;
-
-
         private void OnEnable()
         {
             InventoryTweenState = TweenState.Close;
@@ -148,5 +146,6 @@ namespace TSGameDev.UI.Controls
                 return;
             }
         }
+
     }
 }

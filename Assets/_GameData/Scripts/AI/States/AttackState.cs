@@ -1,13 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Net;
-using TSGameDev.Controls.MainPlayer;
-using TSGameDev.Core.Effects;
-using UnityEditor.PackageManager;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 namespace TSGameDev.Core.AI
 {

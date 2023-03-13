@@ -136,6 +136,15 @@ namespace TSGameDev.Controls
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""2c796e4f-8876-44b1-a2a4-9e6bba0f2a9d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -435,6 +444,17 @@ namespace TSGameDev.Controls
                     ""action"": ""ThrowItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ace92ae7-ea66-4cf9-9bc6-8989aed53c33"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -483,6 +503,7 @@ namespace TSGameDev.Controls
             m_Game_MouseDelta = m_Game.FindAction("MouseDelta", throwIfNotFound: true);
             m_Game_ActionItems = m_Game.FindAction("ActionItems", throwIfNotFound: true);
             m_Game_ThrowItem = m_Game.FindAction("ThrowItem", throwIfNotFound: true);
+            m_Game_Escape = m_Game.FindAction("Escape", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -557,6 +578,7 @@ namespace TSGameDev.Controls
         private readonly InputAction m_Game_MouseDelta;
         private readonly InputAction m_Game_ActionItems;
         private readonly InputAction m_Game_ThrowItem;
+        private readonly InputAction m_Game_Escape;
         public struct GameActions
         {
             private @PlayerControls m_Wrapper;
@@ -573,6 +595,7 @@ namespace TSGameDev.Controls
             public InputAction @MouseDelta => m_Wrapper.m_Game_MouseDelta;
             public InputAction @ActionItems => m_Wrapper.m_Game_ActionItems;
             public InputAction @ThrowItem => m_Wrapper.m_Game_ThrowItem;
+            public InputAction @Escape => m_Wrapper.m_Game_Escape;
             public InputActionMap Get() { return m_Wrapper.m_Game; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -618,6 +641,9 @@ namespace TSGameDev.Controls
                     @ThrowItem.started -= m_Wrapper.m_GameActionsCallbackInterface.OnThrowItem;
                     @ThrowItem.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnThrowItem;
                     @ThrowItem.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnThrowItem;
+                    @Escape.started -= m_Wrapper.m_GameActionsCallbackInterface.OnEscape;
+                    @Escape.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnEscape;
+                    @Escape.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnEscape;
                 }
                 m_Wrapper.m_GameActionsCallbackInterface = instance;
                 if (instance != null)
@@ -658,6 +684,9 @@ namespace TSGameDev.Controls
                     @ThrowItem.started += instance.OnThrowItem;
                     @ThrowItem.performed += instance.OnThrowItem;
                     @ThrowItem.canceled += instance.OnThrowItem;
+                    @Escape.started += instance.OnEscape;
+                    @Escape.performed += instance.OnEscape;
+                    @Escape.canceled += instance.OnEscape;
                 }
             }
         }
@@ -709,6 +738,7 @@ namespace TSGameDev.Controls
             void OnMouseDelta(InputAction.CallbackContext context);
             void OnActionItems(InputAction.CallbackContext context);
             void OnThrowItem(InputAction.CallbackContext context);
+            void OnEscape(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

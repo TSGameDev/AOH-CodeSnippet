@@ -16,3 +16,4 @@ MonoBehaviour:
   EquipmentTweenState: 1
   StatsTweenState: 1
   HUDIconTweenState: 1
+  TargetInventoryState: 1
